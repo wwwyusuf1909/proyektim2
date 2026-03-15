@@ -5,117 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammadyusuf | Link Hub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-            background-attachment: fixed;
-            color: #2c3e50;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .glass-container {
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
-            border-radius: 30px;
-            padding: 40px 30px;
-            width: 100%;
-            max-width: 420px;
-            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
-            text-align: center;
-        }
-
-        .profile img {
-            width: 110px;
-            height: 110px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #fff;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 15px;
-        }
-
-        .profile h1 {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(90deg, #ff007f, #00e5ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .profile p {
-            font-size: 14px;
-            color: #4a4a4a;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-
-        .links {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .link-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            text-decoration: none;
-            color: #444;
-            background: rgba(255, 255, 255, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .link-item:hover {
-            transform: translateY(-3px);
-            background: rgba(255, 255, 255, 0.8);
-            color: #000;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        .shape-1 { border-radius: 30px 5px 30px 5px; border-left: 4px solid #0088cc; }
-        .shape-2 { border-radius: 15px 40px 15px 40px; border-left: 4px solid #e1306c; }
-        .shape-3 { border-radius: 40px 40px 10px 10px; border-left: 4px solid #ff0000; }
-        .shape-4 { border-radius: 10px 10px 40px 40px; border-left: 4px solid #1877f2; }
-
-        .link-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .click-count {
-            font-size: 11px;
-            background: rgba(0,0,0,0.05);
-            padding: 4px 10px;
-            border-radius: 10px;
-            color: #666;
-        }
-
-        .footer {
-            margin-top: 35px;
-            font-size: 12px;
-            color: #7f8c8d;
-        }
-    </style>
+    <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
     <div class="glass-container">
         <div class="profile">
             <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=200&h=200&auto=format&fit=crop" alt="Avatar">
@@ -124,37 +19,7 @@
         </div>
 
         <div class="links" id="links-container">
-            <a href="https://t.me/your_username" target="_blank" class="link-item shape-1" onclick="count('tg')">
-                <div class="link-content">
-                    <i class="fab fa-telegram-plane" style="color:#0088cc"></i>
-                    <span>Telegram</span>
-                </div>
-                <span class="click-count" id="count-tg">0 marta</span>
-            </a>
-
-            <a href="https://instagram.com/your_username" target="_blank" class="link-item shape-2" onclick="count('ins')">
-                <div class="link-content">
-                    <i class="fab fa-instagram" style="color:#e1306c"></i>
-                    <span>Instagram</span>
-                </div>
-                <span class="click-count" id="count-ins">0 marta</span>
-            </a>
-
-            <a href="https://youtube.com/@your_channel" target="_blank" class="link-item shape-3" onclick="count('yt')">
-                <div class="link-content">
-                    <i class="fab fa-youtube" style="color:#ff0000"></i>
-                    <span>YouTube</span>
-                </div>
-                <span class="click-count" id="count-yt">0 marta</span>
-            </a>
-
-            <a href="https://facebook.com/your_profile" target="_blank" class="link-item shape-4" onclick="count('fb')">
-                <div class="link-content">
-                    <i class="fab fa-facebook-f" style="color:#1877f2"></i>
-                    <span>Facebook</span>
-                </div>
-                <span class="click-count" id="count-fb">0 marta</span>
-            </a>
+            <!-- Dynamic links load here -->
         </div>
 
         <div class="footer">
@@ -162,20 +27,41 @@
         </div>
     </div>
 
-    <script>
+    <!-- For demo purposes, we use a simple script that acts like the compiled TS -->
+    <script type="module">
+        import { formatCount, getStorageItem, setStorageItem } from './src/utils.js';
+
+        const links = [
+            { id: 'tg', name: 'Telegram', url: 'https://t.me/your_username', shape: 'shape-1', color: '#0088cc', icon: 'fab fa-telegram-plane' },
+            { id: 'ins', name: 'Instagram', url: 'https://instagram.com/your_username', shape: 'shape-2', color: '#e1306c', icon: 'fab fa-instagram' },
+            { id: 'yt', name: 'YouTube', url: 'https://youtube.com/@your_channel', shape: 'shape-3', color: '#ff0000', icon: 'fab fa-youtube' },
+            { id: 'fb', name: 'Facebook', url: 'https://facebook.com/your_profile', shape: 'shape-4', color: '#1877f2', icon: 'fab fa-facebook-f' }
+        ];
+
+        const container = document.getElementById('links-container');
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        function count(id) {
-            let val = parseInt(localStorage.getItem('count_' + id) || 0) + 1;
-            localStorage.setItem('count_' + id, val);
-            updateUI();
-        }
-
         function updateUI() {
-            ['tg', 'ins', 'yt', 'fb'].forEach(id => {
-                const val = localStorage.getItem('count_' + id) || 0;
-                const el = document.getElementById('count-' + id);
-                if(el) el.innerText = val + ' marta';
+            container.innerHTML = '';
+            links.forEach(link => {
+                const count = getStorageItem('count_' + link.id);
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.target = "_blank";
+                a.className = `link-item ${link.shape}`;
+                a.innerHTML = `
+                    <div class="link-content">
+                        <i class="${link.icon}" style="color:${link.color}"></i>
+                        <span>${link.name}</span>
+                    </div>
+                    <span class="click-count">${formatCount(count)}</span>
+                `;
+                a.onclick = () => {
+                    const newCount = parseInt(getStorageItem('count_' + link.id)) + 1;
+                    setStorageItem('count_' + link.id, newCount);
+                    updateUI();
+                };
+                container.appendChild(a);
             });
         }
 
