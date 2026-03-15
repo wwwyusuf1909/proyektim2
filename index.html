@@ -4,104 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Muhammadyusuf | Link Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* CSS Reset */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            cursor: none !important;
+            font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            /* Creamy Background */
-            background: linear-gradient(135deg, #fff5e6 0%, #f7e8d0 100%);
+            background: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+            background-attachment: fixed;
+            color: #2c3e50;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
-            position: relative;
+            padding: 20px;
         }
 
-        /* Ambient Neon Elements */
-        .neon-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: 0;
-            opacity: 0.5;
-            animation: move 15s infinite alternate ease-in-out;
-        }
-        .orb-1 { width: 300px; height: 300px; background: #ff007f; top: 10%; left: 10%; }
-        .orb-2 { width: 400px; height: 400px; background: #00e5ff; bottom: 10%; right: 10%; animation-delay: -5s; }
-
-        @keyframes move {
-            from { transform: translate(0, 0); }
-            to { transform: translate(50px, 50px); }
-        }
-
-        /* Custom Neon Cursor */
-        #cursor {
-            position: fixed;
-            width: 30px;
-            height: 30px;
-            border: 2px solid transparent;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #ff007f, #00e5ff) border-box;
-            -webkit-mask: linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
-            z-index: 10000;
-            transform: translate(-50%, -50%);
-            filter: drop-shadow(0 0 5px #ff007f) drop-shadow(0 0 5px #00e5ff);
-            transition: width 0.15s, height 0.15s;
-        }
-        .cursor-hover { width: 50px !important; height: 50px !important; }
-
-        /* Glassmorphism Card */
-        .card {
-            position: relative;
-            z-index: 10;
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
+        .glass-container {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.6);
             border-radius: 30px;
-            padding: 40px 25px;
-            width: 380px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            padding: 40px 30px;
+            width: 100%;
+            max-width: 420px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
             text-align: center;
         }
 
-        /* Profile Section */
         .profile img {
-            width: 100px;
-            height: 100px;
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid #fff;
-            box-shadow: 0 5px 15px rgba(255, 0, 127, 0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             margin-bottom: 15px;
         }
 
         .profile h1 {
-            color: #333;
             font-size: 24px;
-            margin-bottom: 5px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #ff007f, #00e5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .profile p {
-            color: #666;
             font-size: 14px;
+            color: #4a4a4a;
             margin-bottom: 30px;
             font-weight: 500;
         }
 
-        /* Link Buttons */
-        .links-container {
+        .links {
             display: flex;
             flex-direction: column;
             gap: 15px;
@@ -124,90 +86,99 @@
             transform: translateY(-3px);
             background: rgba(255, 255, 255, 0.8);
             color: #000;
-            border-color: #00e5ff;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        /* Asymmetric Shapes */
-        .shape-tg { border-radius: 30px 5px 30px 15px; }
-        .shape-ig { border-radius: 10px 40px 15px 30px; }
-        .shape-yt { border-radius: 50px 20px 50px 20px; }
-        .shape-fb { border-radius: 15px 15px 40px 40px; }
+        .shape-1 { border-radius: 30px 5px 30px 5px; border-left: 4px solid #0088cc; }
+        .shape-2 { border-radius: 15px 40px 15px 40px; border-left: 4px solid #e1306c; }
+        .shape-3 { border-radius: 40px 40px 10px 10px; border-left: 4px solid #ff0000; }
+        .shape-4 { border-radius: 10px 10px 40px 40px; border-left: 4px solid #1877f2; }
 
-        /* Counter Badge */
-        .count-badge {
+        .link-content {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .click-count {
             font-size: 11px;
-            background: #333;
-            color: #fff;
-            padding: 2px 8px;
+            background: rgba(0,0,0,0.05);
+            padding: 4px 10px;
             border-radius: 10px;
-            opacity: 0.8;
+            color: #666;
+        }
+
+        .footer {
+            margin-top: 35px;
+            font-size: 12px;
+            color: #7f8c8d;
         }
     </style>
 </head>
 <body>
-
-    <div id="cursor"></div>
-
-    <div class="neon-orb orb-1"></div>
-    <div class="neon-orb orb-2"></div>
-
-    <div class="glass-container card">
+    <div class="glass-container">
         <div class="profile">
             <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=200&h=200&auto=format&fit=crop" alt="Avatar">
-            <h1>Muhammadyusuf Karimjonov</h1>
-            <p>Videograph, photograph</p>
+            <h1>Muhammadyusuf</h1>
+            <p>Videograph & Photographer</p>
         </div>
 
-        <div class="links-container">
-            <a href="https://t.me/your_username" target="_blank" class="link-item shape-tg" onclick="count('tg')">
-                <span>✈️ Telegram</span>
-                <span class="count-badge" id="count-tg">0</span>
+        <div class="links" id="links-container">
+            <a href="https://t.me/your_username" target="_blank" class="link-item shape-1" onclick="count('tg')">
+                <div class="link-content">
+                    <i class="fab fa-telegram-plane" style="color:#0088cc"></i>
+                    <span>Telegram</span>
+                </div>
+                <span class="click-count" id="count-tg">0 marta</span>
             </a>
-            <a href="https://instagram.com/your_username" target="_blank" class="link-item shape-ig" onclick="count('ig')">
-                <span>📸 Instagram</span>
-                <span class="count-badge" id="count-ig">0</span>
+
+            <a href="https://instagram.com/your_username" target="_blank" class="link-item shape-2" onclick="count('ins')">
+                <div class="link-content">
+                    <i class="fab fa-instagram" style="color:#e1306c"></i>
+                    <span>Instagram</span>
+                </div>
+                <span class="click-count" id="count-ins">0 marta</span>
             </a>
-            <a href="https://youtube.com/@your_channel" target="_blank" class="link-item shape-yt" onclick="count('yt')">
-                <span>▶️ YouTube</span>
-                <span class="count-badge" id="count-yt">0</span>
+
+            <a href="https://youtube.com/@your_channel" target="_blank" class="link-item shape-3" onclick="count('yt')">
+                <div class="link-content">
+                    <i class="fab fa-youtube" style="color:#ff0000"></i>
+                    <span>YouTube</span>
+                </div>
+                <span class="click-count" id="count-yt">0 marta</span>
             </a>
-            <a href="https://facebook.com/your_profile" target="_blank" class="link-item shape-fb" onclick="count('fb')">
-                <span>👥 Facebook</span>
-                <span class="count-badge" id="count-fb">0</span>
+
+            <a href="https://facebook.com/your_profile" target="_blank" class="link-item shape-4" onclick="count('fb')">
+                <div class="link-content">
+                    <i class="fab fa-facebook-f" style="color:#1877f2"></i>
+                    <span>Facebook</span>
+                </div>
+                <span class="click-count" id="count-fb">0 marta</span>
             </a>
+        </div>
+
+        <div class="footer">
+            Shaxsiy Link Hub &copy; <span id="year"></span>
         </div>
     </div>
 
     <script>
-        // Cursor logic
-        const cursor = document.getElementById('cursor');
-        document.addEventListener('mousemove', e => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
+        document.getElementById('year').textContent = new Date().getFullYear();
 
-        // Hover effect for cursor
-        document.querySelectorAll('a').forEach(btn => {
-            btn.addEventListener('mouseenter', () => cursor.classList.add('cursor-hover'));
-            btn.addEventListener('mouseleave', () => cursor.classList.remove('cursor-hover'));
-        });
-
-        // Click counter logic
         function count(id) {
-            let val = parseInt(localStorage.getItem('click_' + id) || 0) + 1;
-            localStorage.setItem('click_' + id, val);
+            let val = parseInt(localStorage.getItem('count_' + id) || 0) + 1;
+            localStorage.setItem('count_' + id, val);
             updateUI();
         }
 
         function updateUI() {
-            const ids = ['tg', 'ig', 'yt', 'fb'];
-            ids.forEach(id => {
+            ['tg', 'ins', 'yt', 'fb'].forEach(id => {
                 const val = localStorage.getItem('count_' + id) || 0;
-                document.getElementById('count-' + id).innerText = localStorage.getItem('click_' + id) || 0;
+                const el = document.getElementById('count-' + id);
+                if(el) el.innerText = val + ' marta';
             });
         }
 
-        // Initialize UI
         updateUI();
     </script>
 </body>
